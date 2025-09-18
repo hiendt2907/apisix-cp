@@ -1,3 +1,4 @@
+#!/bin/sh
 set -e
 
 echo "[entrypoint] 🚀 Generating config.yaml from ENV..."
