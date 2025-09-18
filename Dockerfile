@@ -1,10 +1,10 @@
-FROM apache/apisix:latest
+FROM apache/apisix:3.9.1-debian
 
 USER root
-COPY entrypoint.sh /entrypoint.sh
 COPY config-template.yaml /usr/local/apisix/conf/config-template.yaml
-RUN chmod +x /entrypoint.sh
+COPY entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+USER 101   # trả lại user mặc định của apisix
 
-EXPOSE 9080 9443 9180 9280
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 

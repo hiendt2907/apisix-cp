@@ -5,7 +5,7 @@ deployment:
 
 apisix:
   node_listen:
-    - __APISIX_NODE_LISTEN__
+__APISIX_NODE_LISTEN__
   ssl:
     enable: __APISIX_SSL_ENABLE__
     listen_port: __APISIX_SSL_LISTEN__
