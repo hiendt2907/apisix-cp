@@ -4,24 +4,25 @@ deployment:
     config_provider: etcd
 
 apisix:
-  node_listen: ${APISIX_NODE_LISTEN:-9080}
+  node_listen:
+    - __APISIX_NODE_LISTEN__
   ssl:
-    enable: ${APISIX_SSL_ENABLE:-true}
-    listen_port: ${APISIX_SSL_LISTEN:-9443}
+    enable: __APISIX_SSL_ENABLE__
+    listen_port: __APISIX_SSL_LISTEN__
   enable_admin: true
   enable_control: false
   admin_key:
     - name: admin
-      key: ${APISIX_ADMIN_API_KEY:-your-super-secret-key}
+      key: __APISIX_ADMIN_API_KEY__
       role: admin
 
 etcd:
   host:
-    - "${ETCD_HOST:-http://127.0.0.1:2379}"
+    - "__ETCD_HOST__"
   prefix: "/apisix"
   timeout: 30
-  user: "${ETCD_USER:-root}"
-  password: "${ETCD_PASSWORD:-L0caladm;;;}"
+  user: "__ETCD_USER__"
+  password: "__ETCD_PASSWORD__"
 
 plugins:
   - prometheus
