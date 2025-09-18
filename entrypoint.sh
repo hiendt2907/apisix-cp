@@ -22,8 +22,6 @@ etcd:
     - ${ETCD_HOST:-http://127.0.0.1:2379}
   prefix: ${ETCD_PREFIX:-/apisix}
   timeout: ${ETCD_TIMEOUT:-30}
-  user: ${ETCD_USER}
-  password: ${ETCD_PASSWORD}
 
 deployment:
   role: control_plane
