@@ -18,7 +18,7 @@ apisix:
 
 etcd:
   host:
-    - ${ETCD_HOST:-http://127.0.0.1:2379}
+    - ${ETCD_HOST:-http://etcd-service:2379}
   prefix: ${ETCD_PREFIX:-/apisix}
   timeout: ${ETCD_TIMEOUT:-30}
   user: "${ETCD_USER:-root}"
