@@ -1,0 +1,40 @@
+deployment:
+  role: control_plane
+  role_control_plane:
+    config_provider: etcd
+
+apisix:
+  node_listen: ${APISIX_NODE_LISTEN:-9080}
+  ssl:
+    enable: ${APISIX_SSL_ENABLE:-true}
+    listen_port: ${APISIX_SSL_LISTEN:-9443}
+  enable_admin: true
+  enable_control: false
+  admin_key:
+    - name: admin
+      key: ${APISIX_ADMIN_API_KEY:-your-super-secret-key}
+      role: admin
+
+etcd:
+  host:
+    - "${ETCD_HOST:-http://127.0.0.1:2379}"
+  prefix: "/apisix"
+  timeout: 30
+  user: "${ETCD_USER:-root}"
+  password: "${ETCD_PASSWORD:-L0caladm;;;}"
+
+plugins:
+  - prometheus
+  - jwt-auth
+  - ip-restriction
+  - cors
+  - traffic-split
+  - proxy-cache
+  - openid-connect
+  - serverless
+
+nginx_config:
+  worker_processes: "auto"
+  error_log: "/usr/local/apisix/logs/error.log"
+  access_log: "/usr/local/apisix/logs/access.log"
+
