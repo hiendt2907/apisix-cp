@@ -1,4 +1,4 @@
-FROM apache/apisix:3.7.0
+FROM apache/apisix:latest
 
 USER root
 
